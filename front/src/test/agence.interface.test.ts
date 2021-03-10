@@ -1,7 +1,7 @@
 jest.mock('../models/agence.interface.ts');
 
 // tester l'interface Agence
-describe('Agence', (): void => {
+describe('Agence interface', (): void => {
   it('Should return a mocked agence))', (): void => {
     const agence = {
         id: 'Mocked id',

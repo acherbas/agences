@@ -13,8 +13,6 @@ const Agence: React.FunctionComponent = () => {
 
   //tableau des données agences
   const [agences, setAgences]: [IAgence[], (agences: IAgence[]) => void] = React.useState(defaultAgences);
-  //erreur lévé lors de l'appel de l'api
-  const [error, setError]: [string, (error: string) => void] = React.useState('');
   //agence sélectionné
   const [selectValue, setSelectValue] = React.useState<string>(() => 
       localStorage.getItem("ag") ? 
@@ -22,15 +20,18 @@ const Agence: React.FunctionComponent = () => {
       : '0' 
   );
 
+  //charger la liste des agnece depuis l'api
+  const getAgences = React.useCallback(async () => {
+     //appel du service api
+    const response = await api.all();
+    //mise à jour la liste des agences
+    setAgences(response);
+  },[])
+
   React.useEffect(() => {
-    //charger la liste des agnece depuis l'api
-    api.all().then((response) => {
-      setAgences(response);
-    }).catch((ex) => {
-        console.log(ex)
-        setError('Une erreur est survenue lors de la connexion au backend');
-    });
-  });
+    //récuérer la liste des agences
+    getAgences()
+  }, [getAgences])
 
   //mise à jour de l'agence sur la sélection d'un élément de la liste
   const handleChange = (val: string) => {
@@ -43,7 +44,7 @@ const Agence: React.FunctionComponent = () => {
   }
 
   return (
-    <div>
+    <div data-testid="agences-select">
       <h2>Liste des agences</h2>
       <div>
         <select 
@@ -56,7 +57,6 @@ const Agence: React.FunctionComponent = () => {
           ))}
         </select>
       </div>
-      {error && <p className="error">{error}</p>}
     </div>
   );
 };
