@@ -9,11 +9,7 @@ module.exports = {
      * @param res 
      */
     getAgences:  async (req: Request, res: Response): Promise<void> => {
-        try {
-            res.status(200).json(agences)
-        } catch (error) {
-            throw error
-        }
+        res.status(200).json(agences)
     }
 
 }

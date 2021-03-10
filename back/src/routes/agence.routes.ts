@@ -1,5 +1,5 @@
 import { Router } from 'express'
-const agenceController = require('../controllers/agence.controller');
+const agenceController= require('../controllers/agence.controller');
 
 // créer un router
 const router: Router = Router()
