@@ -7,7 +7,7 @@ const cors = require('cors');
 const app: Express = express();
 
 //définir le port
-const PORT: string | number = process.env.PORT || 4000
+const PORT: number = 4000
 
 // parse des requêtes de type application/json
 app.use(cors());
