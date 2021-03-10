@@ -1,6 +1,5 @@
 
 import axios, { AxiosResponse } from "axios";
-import api from '../services/agence.api';
 import { mocked } from 'ts-jest/utils';
 
 jest.mock("axios"); //This is needed to allow jest to modify axios at runtime

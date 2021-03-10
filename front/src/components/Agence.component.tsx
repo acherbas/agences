@@ -3,13 +3,13 @@ import IAgence from '../models/agence.interface';
 import './Agence.css';
 import api from '../services/agence.api'
 
+//l'ensemble des agences par défaut
 const defaultAgences: IAgence[] = [];
+
 /**
- *
- *
- * @returns
+ * le composant Agence contenant le combobox des agences
  */
-const App = () => {
+const Agence: React.FunctionComponent = () => {
 
   //tableau des données agences
   const [agences, setAgences]: [IAgence[], (agences: IAgence[]) => void] = React.useState(defaultAgences);
@@ -61,4 +61,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Agence;
