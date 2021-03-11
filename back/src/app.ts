@@ -9,7 +9,7 @@ const app: Express = express();
 //définir le port
 const PORT: number = 4000
 
-// parse des requêtes de type application/json
+// autorisation des url origies des requètes
 app.use(cors());
 
 // parse des requêtes de type application/json
